@@ -23,9 +23,9 @@ Processes a bank statement, extracting its content into two files: **master** an
 
 #### Processing a new bank statement
 
-**Imagen aquí agregando un nuevo doc**
+![New Statement](images/new_doc.png)
 
-create a new document taking into account:
+To create a new document taking into account:
 
 - Name: guide name for the process
 - Storage path: file to process
@@ -52,7 +52,22 @@ If the document processes correctly, its status changes to processed and you can
 
 #### Versioning documents
 
-Algo aquí
+Document versioning consists of uploading a new corrected ```csv``` document from an already processed document, so that with it reports are generated regarding bank statements.
+
+When the details and master of a document are downloaded, it is guaranteed that at least 70% of the information is correct. To generate reports of the documents, it is necessary that 100% of the information is correct, in such a way that the errors that the downloaded ```csv``` files have must be manually corrected, finally the corrected file must be uploaded to the ocr platform.
+
+<div class="note">
+    <strong>Note: </strong>
+    70% is a relative value, sometimes the percentage will be higher.
+</div>
+
+![Detail Version](images/detail_version.png)
+
+To create a version of a document keep in mind:
+
+- Processed document: document to which the new version will be added
+- Detail(or Master) version: ```csv``` file corrected
+- Ready for reports: check to activate this document is ready for reports
 
 ### Generic documents
 
@@ -96,7 +111,7 @@ Reports show statistics on a common document set
 
 The **application** stores general information on the set of documents for reports: account type, account number, owner, among others.
 
-**Imagen agregando una nueva aplicación**
+![New Application](images/new_app.png)
 
 <div class="note">
     <strong>Note: </strong>
