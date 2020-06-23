@@ -1,9 +1,8 @@
-# Documentation OCR
+# Zinobe-OCRv2
 
-Optical character recognition (OCR) is a tool that allows the processing of different types of files, by creating plugins and templates
+Optical Character Recognition (OCR) is a tool that allows the processing of different types of files to recognize the text it contains
 
-## Plugins
-The plugins aim to recognize information a specific bank statement
+This documentation is divided into two general parts:
 
-## Templates
-Templates are intended to aid in object recognition within images in a file
+- [User manual](user_manual.md)
+- [Developer guide](developer_guide.md)

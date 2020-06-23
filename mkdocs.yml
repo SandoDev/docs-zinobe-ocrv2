@@ -1,4 +1,14 @@
-site_name: My Docs
+site_name: Zinobe OCRv2
+
+nav:
+    - Home: index.md
+    - User manual: user_manual.md
+    - Developer guide: developer_guide.md
+    - Plugin: plugin.md
+    - Template: template.md
+    - ocr: ocr.md
+
+theme: readthedocs
 
 plugins:
     - search

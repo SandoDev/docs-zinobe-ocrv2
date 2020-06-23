@@ -15,7 +15,7 @@ creating a plugin for processing bank statements consists of a folder with the f
 
 Plugins are built using the template method pattern, look at the following class diagram
 
-![Class Diagram Plugin](diagram_class_plugin.png)
+![Class Diagram Plugin](images/diagram_class_plugin.png)
 
 ## Creating the main.py
 
