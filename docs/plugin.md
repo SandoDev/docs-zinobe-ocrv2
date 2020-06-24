@@ -30,9 +30,11 @@ Rules:
 
 #### Example:
 
+**Within the creation of the plugin you can call the templates to improve the process of extracting information from the document**
+
 ```python
 from ..mixins import Statement
-
+from core import templates 
 
 class PluginOne(Statement):
     """Analyzes PluginOne bank statements."""
@@ -45,7 +47,8 @@ class PluginOne(Statement):
         return result_master
 
     def get_detail(self, pages_list):
-        result_detail = some_operation()
+        self.template = templates.TemplateOne(pages_list)
+        result_detail = self.template.process_tables()
         return result_detail
 
     def get_brute(self):
@@ -78,6 +81,7 @@ You must create a file called cofing.json where the plugin configuration paramet
 Parameters:
 
 - name: must be the same name as the plugin folder
+- name related: Name of the bank
 - description: plugin description
 - region: corresponds to the country where the plugin is used
 

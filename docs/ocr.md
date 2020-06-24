@@ -1,4 +1,6 @@
-# Core
+# Project and architecture
+
+## Core
 
 Core is the highest abstraction. It is in the root Zinobe-OCR project.
 As the project works with this flow.
@@ -9,7 +11,7 @@ A[Not Process Document] -- Textract? --> B[Processed Document];
 ```
 **core.py**: represent the basic model structures of BasicDocument and ProcessedDocument.
 
-## extractor.py
+### extractor.py
 
 The main idea behind the extractor is receive a list of dictionaries. Each dict contains the page info, as [blocks](https://docs.aws.amazon.com/textract/latest/dg/how-it-works-document-layout.html).
 The extractor has FormExtractor, TablesExtractor and TextExtractor. Each one of them can return a csv string or a list of objects.
@@ -96,11 +98,11 @@ and lines_n structure is
 lines_n = ["line_1", "line_2", ... , "line_n"]
 ```
 
-## File processing
+### File processing
 
 Core can process images ["png", "jpg", "jpeg"] and pdf files ["pdf"] through PDF and Image classes. The third party library used here is [PyMuPDF-fitz](https://documentation.help/PyMuPDF//genindex.html).  
 
-# Exceptions
+## Exceptions
 
 ## System errors
 
@@ -115,7 +117,8 @@ Core can process images ["png", "jpg", "jpeg"] and pdf files ["pdf"] through PDF
 | 1004        | file_extension | File has not extension  |
 | 1005        | import_error   | Can not import          |
 
-# Django Applications
+
+## Django Applications
 
 This project uses two apps: **documents** and **statements**.
 
@@ -142,7 +145,7 @@ This projects use [django-rest-framework.org](https://www.django-rest-framework.
 The exceptions are formerly in the exceptions.py file inside each app. These are built with [custom exceptions](https://www.django-rest-framework.org/api-guide/exceptions/#custom-exception-handling).
 Custom errors messages are in constants.py file.
 
-# [Celery](http://www.celeryproject.org/)
+## [Celery](http://www.celeryproject.org/)
 
 As **Textract** can not handle with simultaneous analyzing document process, this project uses queues to handle with. 
 During process document inside, `tasks.py`. Using *@shared_task(bind=True)* the task_id is saved in ProcessDocument model.
@@ -152,26 +155,30 @@ This ProcessDoc->task_id is recovered in admin.py.
 
 - [ ] Strategy pattern to use Textract or other service 
 
-# Packages
+## Packages
 
-## File Manager
+### File Manager
 
 This package get the document that can be pdf or image (TODO, it validates) and extract its pages in bytes list.
 If file is image, it returns a list of one image.
 
 ![](https://mermaid.ink/img/eyJjb2RlIjoiY2xhc3NEaWFncmFtXG4gIEZpbGUgPHwtLSBJbWFnZVxuICBGaWxlIDx8LS0gUERGXG4gIEZpbGUgOiArc3RyIHBhdGhfZmlsZVxuICBGaWxlIDogK2JpbmFyeSBiaW5hcmllc1xuICBGaWxlIDogK2JpbmFyaWVzKClcbiAgRmlsZSA6ICtnZXRfYmluYXJpZXMoKVxuXG4gIGNsYXNzIEltYWdle1xuICAgICtsaXN0IGltYWdlc1xuICAgICtnZXRfcGFnZXMoKSBcbiAgfVxuXG4gIGNsYXNzIFBERntcbiAgICArbGlzdCBpbWFnZXNcbiAgICArZ2V0X3BhZ2VzKClcbiAgICArc2V0X2JpbmFyaWVzKClcbiAgfSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
-# Microkernel Architecture
+### AWS utils
+
+### OpenCV
+
+## Microkernel Architecture
 As this project has a core, the apps inherits from it.
 The plugins of this projects are inside the apps folder (plugins).
 This plugins has a config.
 The importation of the plugin, i.e statement/plugins/bancolombia/... is managed trough `__init__.py`file inside plugins folder. It has a **factory method** that uses dynamic import to return the `bancolombia.main.Bancolombia` class.
 
-# Notes
+## Notes
 The default storage used in this project is [django-storages](https://django-storages.readthedocs.io/en/latest/).
 So, you will notice that the file is uploaded automatically and you won't find how...
 
-## SmartyPants
+### SmartyPants
 
 SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
 
@@ -181,7 +188,7 @@ SmartyPants converts ASCII punctuation characters into "smart" typographic punct
 | Quotes           | `"Isn't this fun?"`             | "Isn't this fun?"             |
 | Dashes           | `-- is en-dash, --- is em-dash` | -- is en-dash, --- is em-dash |
 
-## KaTeX
+### KaTeX
 
 You can render LaTeX mathematical expressions using [KaTeX](https://khan.github.io/KaTeX/):
 The *Gamma function* satisfying 

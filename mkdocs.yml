@@ -4,9 +4,9 @@ nav:
     - Home: index.md
     - User manual: user_manual.md
     - Developer guide: developer_guide.md
-    - Plugin: plugin.md
     - Template: template.md
-    - ocr: ocr.md
+    - Plugin: plugin.md
+    - Project OCR: ocr.md
 
 theme: readthedocs
 
